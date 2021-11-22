@@ -1,0 +1,37 @@
+<div
+  class="flex items-center justify-center min-h-screen"
+  *ngIf="userState.state | async as state"
+>
+  <div class="flex-col w-full lg:max-w-2xl px-2">
+    <div class="flex my-2">
+      <button class="fs-32" (click)="userState.openCreateModal()">
+        <mat-icon>add</mat-icon> Create User
+      </button>
+    </div>
+    <div class="flex flex-row justify-between flex-wrap ">
+      <div
+        class="
+          card card-shadow card-bg-accent
+          flex flex-col
+          mb-4
+          p-2
+          text-center
+          cursor-pointer
+        "
+        *ngFor="let item of state.userData.data"
+      >
+        <h5 class="fs16 fw-700">{{ item.first_name }}</h5>
+        <h5 class="fs-14 mb-2">{{ item.email }}</h5>
+        <img class="h-40" [src]="item.avatar" alt="User Avatar" />
+        <div class="flex justify-between my-2">
+          <button [routerLink]="['edit', item.id]" >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button (click)="userState.openDeleteModal(item)" class="text-danger">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

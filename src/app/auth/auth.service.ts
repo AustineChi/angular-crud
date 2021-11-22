@@ -4,13 +4,26 @@ import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { HttpService } from '../http.service';
 
+
+
+
+interface loginStateProps {
+  loading: boolean;
+}
+
+const initialState: loginStateProps = {
+  loading: false,
+};
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
+   _isLoggedIn$ = new BehaviorSubject<boolean>(false);
+   loadingState$  = new BehaviorSubject<loginStateProps>(initialState);
+
   isLoggedIn$ = this._isLoggedIn$.asObservable();
-  
+
   constructor(private httpService: HttpService) {
     const token = localStorage.getItem('auth');
     this._isLoggedIn$.next(!!token);

@@ -1,0 +1,33 @@
+<div class="flex min-h-screen items-center justify-center">
+  <div class="flex flex-col" *ngIf="userState.state | async as state">
+    <div class="card px-4 py-6 w-auto lg:w-96">
+      <form [formGroup]="userForm" class="flex flex-col w-full">
+        <div class="flex justify-center my-2">
+          <h5 class="fs-24 fw-500">Update User</h5>
+        </div>
+        <mat-form-field class="w-full">
+          <mat-label>Name</mat-label>
+          <input formControlName="name" matInput #input type="text" />
+        </mat-form-field>
+        <mat-form-field class="w-full">
+          <mat-label>Job</mat-label>
+          <input formControlName="job" matInput #input type="job" />
+        </mat-form-field>
+        <div class="flex flex-col my-2">
+          <mat-progress-bar
+            *ngIf="state.loading"
+            class="my-2"
+            mode="indeterminate"
+          ></mat-progress-bar>
+          <button
+            [disabled]="userForm.invalid"
+            (click)="userState.updateUser(userForm.value)"
+            class="btn btn-primary py-3 w-full fs-14"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
