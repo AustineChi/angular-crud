@@ -1,17 +1,58 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+
+import { render, screen } from '@testing-library/angular';
+import userEvent from '@testing-library/user-event';
+import "@testing-library/jest-dom";
+
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 
 import { CreateUserModalComponent } from './create-user-modal.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UsersRoutingModule } from '../users-routing.module';
+import { CommonModule } from '@angular/common';
+import { UserListComponent } from '../user-list/user-list.component';
+import { DeleteUserModalComponent } from '../delete-user-modal/delete-user-modal.component';
+import { EditUserViewComponent } from '../edit-user-view/edit-user-view.component';
 
 describe('CreateUserModalComponent', () => {
   let component: CreateUserModalComponent;
   let fixture: ComponentFixture<CreateUserModalComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CreateUserModalComponent ]
-    })
-    .compileComponents();
-  });
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [ 
+        CreateUserModalComponent ,
+        UserListComponent,
+        DeleteUserModalComponent,
+        EditUserViewComponent,
+      ],
+      imports: [
+        MatIconModule,
+        FormsModule,
+        RouterModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatGridListModule,
+        MatDialogModule,
+        MatProgressBarModule,
+        UsersRoutingModule,
+        MatCardModule,
+        MatButtonModule,
+        CommonModule,
+      ]
+    }).compileComponents();
+  }));
+
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CreateUserModalComponent);
@@ -19,7 +60,43 @@ describe('CreateUserModalComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should render the form', async () => {
+    await render(CreateUserModalComponent);
   });
+
+  it('form should display error messages and submit if valid', async () => {
+    const submitSpy = jest.fn();
+    await render(CreateUserModalComponent, {
+      imports: [],
+      componentProperties: {
+        userForm: {
+          emit: submitSpy
+        } as any
+      }
+    });
+  });
+
+
+  it('test filled form on change and click', async () => {
+    await render(CreateUserModalComponent);
+  
+    const nameControl = screen.getByRole('input', { name: 'name' });
+    const jobControl = screen.getByRole('input', { name: 'job' });
+  
+    expect(nameControl).toBeInTheDocument;
+    expect(jobControl).toBeInTheDocument;
+  
+    userEvent.type(nameControl, 'smith coy');
+    userEvent.type(jobControl, 'Engineer');
+    
+    const form = screen.getByRole('form');
+    expect(form).toHaveFormValues({
+      name: 'smith coy',
+      job: 'Engineer',
+    });
+  });
+
 });
+
+
+
