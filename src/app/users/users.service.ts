@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../http.service';
-import { IcreateUser, IcreateUserResp, IupdateUserResp, IuserByIdResp, IuserListResponse } from './users.interface';
+import { IcreateUser, IcreateUserResp, IupdateUserResp, IuserByIdResp, IuserListResponse } from './user.interface';
 
 @Injectable({
   providedIn: 'root',

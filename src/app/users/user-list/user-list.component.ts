@@ -3,6 +3,8 @@ import { UserStateService } from '../user-state.service';
 
 @Component({
   templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.scss']
+
 })
 export class UserListComponent implements OnInit {
 

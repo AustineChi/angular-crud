@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { CreateUserModalComponent } from './create-user-modal/create-user-modal.component';
 import { DeleteUserModalComponent } from './delete-user-modal/delete-user-modal.component';
-import { IcreateUser, ISingleUser, IuserListResponse } from './users.interface';
+import { IcreateUser, ISingleUser, IuserListResponse } from './user.interface';
 import { UserService } from './users.service';
 
 export interface userState {

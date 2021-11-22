@@ -1,0 +1,14 @@
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: 50px 3%;
+    display: flex;
+    form {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        .full-width {
+            width: 100%;
+        }
+    }
+}

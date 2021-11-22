@@ -7,6 +7,8 @@ import { Subscription } from 'rxjs';
 
 @Component({
   templateUrl: './edit-user-view.component.html',
+  styleUrls: ['./edit-user-view.component.scss']
+
 })
 export class EditUserViewComponent implements OnInit, OnDestroy {
   userForm: FormGroup;

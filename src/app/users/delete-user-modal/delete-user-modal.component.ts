@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserStateService } from '../user-state.service';
-import { ISingleUser } from '../users.interface';
+import { ISingleUser } from '../user.interface';
 
 @Component({
   templateUrl: './delete-user-modal.component.html',

@@ -4,6 +4,8 @@ import { UserStateService } from '../user-state.service';
 
 @Component({
   templateUrl: './create-user-modal.component.html',
+  styleUrls:  ['./create-user-modal.component.scss'],
+
 })
 export class CreateUserModalComponent implements OnInit {
 
