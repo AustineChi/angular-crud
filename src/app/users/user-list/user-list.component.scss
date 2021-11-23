@@ -1,20 +1,24 @@
 .list-users {
     display: grid;
-    padding-left: 1rem;
-    padding-right: 1rem;
     width: 100%;
     max-width: 1000px;
     margin-bottom: 200px;
-    grid-template-columns: repeat(2, 1fr);
-    @media only screen and (min-width: 600px) {
-        grid-template-columns: repeat(auto-fill, 17rem);
+    grid-template-columns: repeat(auto-fill, 20rem);
+    justify-content: center;
+    @media only screen and (min-width: 760px) {
       justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
+
+    }
+    @media only screen and (min-width: 1200px) {
+      justify-content: space-between;
+    grid-template-columns: repeat(3, 1fr);
+
     }
 }
 
 .user-card{
-    max-width: 17rem;
-    width: 100%;
+    width: 17rem;
     margin: 10px;
   }
 
