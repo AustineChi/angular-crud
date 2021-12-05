@@ -13,7 +13,7 @@ export class DeleteUserModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submit(){
-
+  deleteUser(){
+    this.userState.deleteUser(this.data.id)
   }
 }

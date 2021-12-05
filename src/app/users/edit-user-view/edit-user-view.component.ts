@@ -20,9 +20,11 @@ export class EditUserViewComponent implements OnInit, OnDestroy {
       job: new FormControl('', Validators.required),
     });
   }
+
   ngOnDestroy(): void {
    this.routeSub.unsubscribe()
   }
+
   ngOnInit(): void {
    this.routeSub = this.route.params
     .pipe(map((params) => params['id']))
@@ -38,5 +40,12 @@ export class EditUserViewComponent implements OnInit, OnDestroy {
       })
     }
     )
+  }
+
+  onSubmit(): void {
+    if (this.userForm.invalid) {
+      return;
+    }
+    this.userState.updateUser(this.userForm.value)
   }
 }

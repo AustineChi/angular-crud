@@ -1,5 +1,5 @@
 <div class="container" *ngIf="userState.state | async as state">
-  <form [formGroup]="userForm" class="form full-width">
+  <form [formGroup]="userForm" class="form full-width" (ngSubmit)="onSubmit()">
       <div class="flex justify-center my-2">
           <h1 class="title">Update User</h1>
       </div>
@@ -18,9 +18,10 @@
               mode="indeterminate"
               ></mat-progress-bar>
           <button
-          mat-raised-button color="primary" 
+          mat-raised-button 
+          type="submit"
+          color="primary" 
           [disabled]="userForm.invalid"
-          (click)="userState.updateUser(userForm.value)"
           class="btn btn-primary py-3 full-width"
           >
           Submit
