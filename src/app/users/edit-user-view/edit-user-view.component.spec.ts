@@ -2,6 +2,11 @@ import { render, screen } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 import "@testing-library/jest-dom";
 
+
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -47,6 +52,12 @@ describe('EditUserViewComponent', () => {
         MatCardModule,
         MatButtonModule,
         CommonModule,
+        Observable,
+        throwError,
+        catchError,
+        retry,
+        environment
+
       ]
     }).compileComponents();
   }));

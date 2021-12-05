@@ -108,12 +108,15 @@ export class UserStateService {
   }
 
   public openCreateModal() {
-    this.dialogRef = this.dialog.open(CreateUserModalComponent);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '450px',
+    this.dialogRef = this.dialog.open(CreateUserModalComponent, dialogConfig);
   }
 
   public openDeleteModal(user: ISingleUser) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = user;
+    dialogConfig.width = '450px',
     this.dialogRef = this.dialog.open(DeleteUserModalComponent, dialogConfig);
   }
 

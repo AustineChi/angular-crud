@@ -1,15 +1,16 @@
 .container {
     width: 100%;
-    margin: 50px 3%;
     display: flex;
-    .card > form {
+    .card 
+    {
         display: flex;
-        flex-direction: column;
-        flex: 1;
-        .full-width {
-            width: 100%;
+        form {
+            .full-width {
+                width: 100%;
+            }
         }
     }
+    
 }
  
 
