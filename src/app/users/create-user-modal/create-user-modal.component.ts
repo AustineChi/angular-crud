@@ -8,7 +8,6 @@ import { UserStateService } from '../user-state.service';
 })
 export class CreateUserModalComponent implements OnInit {
   userForm: FormGroup;
-  submitted = false;
 
   constructor(public userState: UserStateService) {
     this.userForm = new FormGroup({
@@ -18,8 +17,6 @@ export class CreateUserModalComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.submitted = true;
-
     if (this.userForm.invalid) {
       return;
     }
@@ -27,7 +24,6 @@ export class CreateUserModalComponent implements OnInit {
   }
 
   onReset(): void {
-    this.submitted = false;
     this.userForm.reset();
   }
 
