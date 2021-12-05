@@ -1,4 +1,4 @@
-<div class="container" *ngIf="userState.state | async as state">
+<ng-container class="container" *ngIf="userState.state | async as state">
   <mat-card class="card">
       <form [formGroup]="userForm" class="" (ngSubmit)="onSubmit()">
           <div class="flex justify-center my-2">
@@ -29,4 +29,4 @@
           </div>
       </form>
   </mat-card>
-</div>
+</ng-container>

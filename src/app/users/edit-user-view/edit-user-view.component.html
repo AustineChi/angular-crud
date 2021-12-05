@@ -1,4 +1,4 @@
-<div class="container" *ngIf="userState.state | async as state">
+<ng-container class="container" *ngIf="userState.state | async as state">
   <form [formGroup]="userForm" class="form full-width" (ngSubmit)="onSubmit()">
       <div class="flex justify-center my-2">
           <h1 class="title">Update User</h1>
@@ -28,4 +28,4 @@
           </button>
       </div>
   </form>
-</div>
+</ng-container>

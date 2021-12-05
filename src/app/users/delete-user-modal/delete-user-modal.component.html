@@ -1,4 +1,4 @@
-<div class="flex flex-col" *ngIf="userState.state | async as state">
+<ng-container class="flex flex-col" *ngIf="userState.state | async as state">
   <div class="flex justify-center my-2">
       <mat-icon class="fs-40 text-danger">warning</mat-icon>
   </div>
@@ -17,4 +17,4 @@
       >
   Delete
   </button>
-</div>
+</ng-container>
